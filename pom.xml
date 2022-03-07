@@ -32,6 +32,22 @@
     <version>4.5.11</version>
     <name>Siddhi</name>
     <description>Siddhi, high performing Complex Event Processing Engine</description>
+    <url>http://github.com/graylog-labs/siddhi</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Graylog, Inc.</name>
+            <email>hello@graylog.com</email>
+        </developer>
+    </developers>
 
     <modules>
         <module>modules/siddhi-query-api</module>
@@ -378,6 +394,39 @@
                 <version>${maven.shadeplugin.version}</version>
             </plugin>
 
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                  <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.12</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus-staging</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <autoDropAfterRelease>true</autoDropAfterRelease>
+                </configuration>
+            </plugin>
+
 <!--            <plugin>&lt;!&ndash; Overridden from parent pom to exclude generated sources &ndash;&gt;-->
 <!--                <groupId>org.codehaus.mojo</groupId>-->
 <!--                <artifactId>findbugs-maven-plugin</artifactId>-->
@@ -526,6 +575,19 @@
         </repository>
 
     </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <pluginRepositories>
 
