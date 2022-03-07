@@ -20,7 +20,7 @@
 
     <parent>
         <artifactId>siddhi</artifactId>
-        <groupId>org.graylog.siddhi</groupId>
+        <groupId>org.graylog.repackaged.siddhi</groupId>
         <version>4.5.11</version>
         <relativePath>../../pom.xml</relativePath>
 
@@ -32,15 +32,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.graylog.siddhi</groupId>
+            <groupId>org.graylog.repackaged.siddhi</groupId>
             <artifactId>siddhi-query-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.graylog.siddhi</groupId>
+            <groupId>org.graylog.repackaged.siddhi</groupId>
             <artifactId>siddhi-query-compiler</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.graylog.siddhi</groupId>
+            <groupId>org.graylog.repackaged.siddhi</groupId>
             <artifactId>siddhi-annotations</artifactId>
         </dependency>
         <dependency>
