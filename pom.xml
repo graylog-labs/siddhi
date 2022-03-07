@@ -35,12 +35,12 @@
 
     <modules>
         <module>modules/siddhi-query-api</module>
-        <module>modules/siddhi-service</module>
+        <!--module>modules/siddhi-service</module-->
         <module>modules/siddhi-query-compiler</module>
         <module>modules/siddhi-core</module>
-        <module>modules/siddhi-samples</module>
+        <!--module>modules/siddhi-samples</module-->
         <module>modules/siddhi-annotations</module>
-        <module>modules/siddhi-doc-gen</module>
+        <!--module>modules/siddhi-doc-gen</module-->
         <!--module>modules/siddhi-core/siddhi-core-doc-gen</module-->
         <module>coverage-reports</module>
     </modules>
@@ -350,11 +350,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>org.graylog.siddhi</groupId>
-                    <artifactId>siddhi-doc-gen</artifactId>
-                    <version>${project.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
