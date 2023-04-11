@@ -1,0 +1,29 @@
+name: "Maven"
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  build:
+    name: "Build"
+
+    strategy:
+      matrix:
+        java-version:
+          - "8"
+
+    steps:
+      - uses: "actions/checkout@v3"
+
+      - name: "Set up JDK ${{ matrix.version }}"
+        uses: "actions/setup-java@v3"
+        with:
+          java-version: "${{ matrix.java-version }}"
+          distribution: "temurin"
+          cache: "maven"
+
+      - name: "Build"
+        shell: "bash"
+        run: |
+          mvn --show-version --batch-mode --fail-fast clean verify
