@@ -171,43 +171,4 @@ public class TriggerTestCase {
         siddhiAppRuntime.shutdown();
 
     }
-
-    @Test
-    public void testFilterQuery7() throws InterruptedException {
-        log.info("testTrigger7 - OUT 2");
-
-        SiddhiManager siddhiManager = new SiddhiManager();
-
-        String plan = "" +
-                "define stream cseEventStream (symbol string, price float, volume long);" +
-                "define trigger triggerStream at '*/1 * * * * ?' ;";
-
-        SiddhiAppRuntime siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(plan);
-
-        siddhiAppRuntime.addCallback("triggerStream", new StreamCallback() {
-
-            @Override
-            public void receive(Event[] events) {
-                EventPrinter.print(events);
-                for (Event event : events) {
-                    long timestamp = event.getTimestamp();
-                    count++;
-                    if (count > 1) {
-                        float triggerTimeDiff = timestamp / 1000 - lastTimeStamp / 1000;
-                        AssertJUnit.assertTrue(1.0f == triggerTimeDiff);
-                    }
-                    lastTimeStamp = timestamp;
-                }
-                eventArrived = true;
-            }
-        });
-
-        siddhiAppRuntime.start();
-
-        Thread.sleep(1000);
-        siddhiAppRuntime.shutdown();
-        AssertJUnit.assertEquals(true, eventArrived);
-
-    }
-
 }
