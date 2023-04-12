@@ -3,6 +3,8 @@ name: "Maven"
 on:
   pull_request:
   push:
+    branches:
+      - "graylog-repackaging"
 
 jobs:
   build:
