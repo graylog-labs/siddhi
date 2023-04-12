@@ -512,9 +512,9 @@
     </properties>
 
     <scm>
-        <url>https://github.com/siddhi-io/siddhi.git</url>
-        <developerConnection>scm:git:https://github.com/siddhi-io/siddhi.git</developerConnection>
-        <connection>scm:git:https://github.com/siddhi-io/siddhi.git</connection>
+        <url>https://github.com/graylog-labs/siddhi.git</url>
+        <developerConnection>scm:git:git@github.com:graylog-labs/siddhi.git</developerConnection>
+        <connection>scm:git:git@github.com:graylog-labs/siddhi.git</connection>
         <tag>v4.5.11</tag>
     </scm>
 
