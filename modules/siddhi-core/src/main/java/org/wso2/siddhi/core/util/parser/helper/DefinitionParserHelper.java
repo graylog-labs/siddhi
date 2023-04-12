@@ -43,7 +43,6 @@ import org.wso2.siddhi.core.table.InMemoryTable;
 import org.wso2.siddhi.core.table.Table;
 import org.wso2.siddhi.core.table.record.RecordTableHandler;
 import org.wso2.siddhi.core.table.record.RecordTableHandlerManager;
-import org.wso2.siddhi.core.trigger.CronTrigger;
 import org.wso2.siddhi.core.trigger.PeriodicTrigger;
 import org.wso2.siddhi.core.trigger.StartTrigger;
 import org.wso2.siddhi.core.trigger.Trigger;
@@ -266,7 +265,7 @@ public class DefinitionParserHelper {
                 } else {
                     if (!expression.trim().equalsIgnoreCase(SiddhiConstants.TRIGGER_START)) {
                         try {
-                            org.quartz.CronExpression.isValidExpression(expression);
+                            throw new UnsupportedOperationException("Quartz support got removed from Siddhi");
                         } catch (Throwable t) {
                             throw new SiddhiAppValidationException("Trigger Definition '" + triggerDefinition
                                     .getId()
@@ -297,7 +296,7 @@ public class DefinitionParserHelper {
             } else if (triggerDefinition.getAt().trim().equalsIgnoreCase(SiddhiConstants.TRIGGER_START)) {
                 trigger = new StartTrigger();
             } else {
-                trigger = new CronTrigger();
+                throw new UnsupportedOperationException("Quartz support got removed from Siddhi");
             }
             StreamJunction streamJunction = streamJunctionMap.get(triggerDefinition.getId());
             trigger.init(triggerDefinition, siddhiAppContext, streamJunction);

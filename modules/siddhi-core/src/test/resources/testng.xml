@@ -104,7 +104,6 @@
 
             <class name="org.wso2.siddhi.core.query.trigger.TriggerTestCase"/>
 
-            <class name="org.wso2.siddhi.core.query.window.CronWindowTestCase"/>
             <class name="org.wso2.siddhi.core.query.window.ExternalTimeBatchWindowTestCase"/>
             <class name="org.wso2.siddhi.core.query.window.ExternalTimeWindowTestCase"/>
             <class name="org.wso2.siddhi.core.query.window.FrequentWindowTestCase"/>
@@ -116,7 +115,6 @@
             <class name="org.wso2.siddhi.core.query.window.TimeBatchWindowTestCase"/>
             <class name="org.wso2.siddhi.core.query.window.TimeLengthWindowTestCase"/>
             <class name="org.wso2.siddhi.core.query.window.TimeWindowTestCase"/>
-            <class name="org.wso2.siddhi.core.window.CronWindowTestCase"/>
             <class name="org.wso2.siddhi.core.window.CustomJoinWindowTestCase"/>
             <class name="org.wso2.siddhi.core.window.ExternalTimeBatchWindowTestCase"/>
             <class name="org.wso2.siddhi.core.window.FrequentWindowEventTbaleTestCase"/>
