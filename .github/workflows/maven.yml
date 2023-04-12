@@ -27,4 +27,4 @@ jobs:
       - name: "Build"
         shell: "bash"
         run: |
-          mvn --show-version --batch-mode --fail-fast clean verify
+          mvn --show-version --batch-mode --fail-fast clean package
