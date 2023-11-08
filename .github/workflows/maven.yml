@@ -17,7 +17,7 @@ jobs:
           - "8"
 
     steps:
-      - uses: "actions/checkout@v3"
+      - uses: "actions/checkout@v4"
 
       - name: "Set up JDK ${{ matrix.version }}"
         uses: "actions/setup-java@v3"
@@ -28,5 +28,8 @@ jobs:
 
       - name: "Build"
         shell: "bash"
+        env:
+          MAVEN_ARGS: "--show-version --batch-mode --fail-fast --no-transfer-progress"
+          MAVEN_OPTS: "-Dstyle.color=always -DtrimStackTrace=false"
         run: |
-          mvn --show-version --batch-mode --fail-fast clean package
+          mvn clean package
