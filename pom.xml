@@ -483,7 +483,7 @@
         <log4j.imp.pkg.version.range>[1.2.17, 1.3.0)</log4j.imp.pkg.version.range>
         <slf4j.version>1.7.12</slf4j.version>
         <mvel2.version>2.2.1.Final</mvel2.version>
-        <antlr.runtime.version>4.9.3</antlr.runtime.version>
+        <antlr.runtime.version>4.13.1</antlr.runtime.version>
         <disruptor.version>3.3.2.wso2v2</disruptor.version>
         <guava.version>19.0</guava.version>
         <gson.version>2.8.0</gson.version>
@@ -505,7 +505,7 @@
         <freemarker.version>2.3.25-incubating</freemarker.version>
         <commons.io.version>1.3.2</commons.io.version>
         <snakeyaml.version>1.21</snakeyaml.version>
-        <org.jacoco.version>0.7.9</org.jacoco.version>
+        <org.jacoco.version>0.8.11</org.jacoco.version>
         <maven.findbugsplugin.version>3.0.4</maven.findbugsplugin.version>
         <mavan.findbugsplugin.exclude.file>findbugs-exclude.xml</mavan.findbugsplugin.exclude.file>
         <mavan.checkstyle.suppression.file>checkstyle-suppressions.xml</mavan.checkstyle.suppression.file>
