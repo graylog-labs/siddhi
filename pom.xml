@@ -99,12 +99,6 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>org.mvel</groupId>
-                <artifactId>mvel2</artifactId>
-                <version>${mvel2.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-runtime</artifactId>
                 <version>${antlr.runtime.version}</version>
@@ -136,11 +130,10 @@
                 <artifactId>metrics-core</artifactId>
                 <version>${metrics.version}</version>
             </dependency>
-
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>${slf4j.version}</version>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-jmx</artifactId>
+                <version>${metrics.version}</version>
             </dependency>
 
             <!--Event Table-->
@@ -175,13 +168,6 @@
                 <groupId>org.graylog.repackaged.siddhi</groupId>
                 <artifactId>siddhi-annotations</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-
-            <!--&lt;!&ndash; Map &ndash;&gt;-->
-            <dependency>
-                <groupId>com.jayway.jsonpath</groupId>
-                <artifactId>json-path</artifactId>
-                <version>${jsonpath.version}</version>
             </dependency>
 
             <!-- Siddhi Service Dependency-->
@@ -226,11 +212,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons.io.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>${snakeyaml.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jacoco</groupId>
@@ -488,6 +469,22 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnWarning>true</failOnWarning>
+                </configuration>
+            </plugin>
+
 <!--            <plugin>&lt;!&ndash; Overridden from parent pom to exclude generated sources &ndash;&gt;-->
 <!--                <groupId>org.codehaus.mojo</groupId>-->
 <!--                <artifactId>findbugs-maven-plugin</artifactId>-->
@@ -545,34 +542,30 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <testng.version>6.8</testng.version>
-        <junit.version>4.10</junit.version>
+        <testng.version>7.8.0</testng.version>
+        <junit.version>4.13.2</junit.version>
         <log4j.version>1.2.17.wso2v1</log4j.version>
         <log4j.imp.pkg.version.range>[1.2.17, 1.3.0)</log4j.imp.pkg.version.range>
-        <slf4j.version>1.7.12</slf4j.version>
-        <mvel2.version>2.2.1.Final</mvel2.version>
         <antlr.runtime.version>4.13.1</antlr.runtime.version>
-        <disruptor.version>3.3.2.wso2v2</disruptor.version>
-        <guava.version>19.0</guava.version>
-        <gson.version>2.8.0</gson.version>
-        <classindex.version>3.4</classindex.version>
+        <disruptor.version>3.4.2.wso2v1</disruptor.version>
+        <guava.version>32.1.3-jre</guava.version>
+        <gson.version>2.10.1</gson.version>
+        <classindex.version>3.13</classindex.version>
         <org.osgi.core.version>6.0.0</org.osgi.core.version>
-        <version.equinox.osgi.services>3.3.100.v20120522-1822</version.equinox.osgi.services>
+        <version.equinox.osgi.services>3.3.100.v20130513-1956</version.equinox.osgi.services>
         <equinox.osgi.services.imp.pkg.version.range>[1.2.0, 1.3.0)
         </equinox.osgi.services.imp.pkg.version.range>
         <hazelcast.imp.pkg.version.range>[3.5, 3.6.0)</hazelcast.imp.pkg.version.range>
-        <metrics.version>3.1.0</metrics.version>
-        <jsonpath.version>2.2.0</jsonpath.version>
-        <msf4j.version>2.1.1</msf4j.version>
+        <metrics.version>4.2.22</metrics.version>
+        <msf4j.version>2.8.11</msf4j.version>
         <maven.shadeplugin.version>3.4.1</maven.shadeplugin.version>
         <servlet-api-version>2.5</servlet-api-version>
-        <jackson-datatype-joda-version>2.9.6</jackson-datatype-joda-version>
-        <maven.core.version>3.3.9</maven.core.version>
-        <maven.plugin.api.version>3.0</maven.plugin.api.version>
-        <maven.plugin.annotations.version>3.4</maven.plugin.annotations.version>
-        <freemarker.version>2.3.25-incubating</freemarker.version>
+        <jackson-datatype-joda-version>2.15.3</jackson-datatype-joda-version>
+        <maven.core.version>3.9.5</maven.core.version>
+        <maven.plugin.api.version>3.9.5</maven.plugin.api.version>
+        <maven.plugin.annotations.version>3.10.2</maven.plugin.annotations.version>
+        <freemarker.version>2.3.32</freemarker.version>
         <commons.io.version>1.3.2</commons.io.version>
-        <snakeyaml.version>1.21</snakeyaml.version>
         <org.jacoco.version>0.8.11</org.jacoco.version>
         <maven.findbugsplugin.version>3.0.4</maven.findbugsplugin.version>
         <mavan.findbugsplugin.exclude.file>findbugs-exclude.xml</mavan.findbugsplugin.exclude.file>
