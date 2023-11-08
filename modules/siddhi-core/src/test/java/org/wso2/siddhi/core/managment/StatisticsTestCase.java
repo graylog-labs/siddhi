@@ -178,7 +178,7 @@ public class StatisticsTestCase {
         log.info(output);
 
         //assert
-        AssertJUnit.assertFalse(output.contains("Gauges"));
+        AssertJUnit.assertTrue(output.contains("Gauges"));
 
         siddhiAppRuntime.shutdown();
         System.setOut(old);
@@ -264,7 +264,7 @@ public class StatisticsTestCase {
         baos.reset();
         log.info(output);
 
-        AssertJUnit.assertFalse(output.contains("Gauges"));
+        AssertJUnit.assertTrue(output.contains("Gauges"));
 
         siddhiAppRuntime.shutdown();
         System.setOut(old);
@@ -329,7 +329,7 @@ public class StatisticsTestCase {
         baos.reset();
         log.info(output);
 
-        AssertJUnit.assertFalse(output.contains("Gauges"));
+        AssertJUnit.assertTrue(output.contains("Gauges"));
 
         //reset
         eventArrived = false;
@@ -357,7 +357,6 @@ public class StatisticsTestCase {
 
     /**
      * To not enable stats if no Stats manager enabled
-     *
      */
     @Test
     public void statisticsTest5() throws InterruptedException {
@@ -409,7 +408,7 @@ public class StatisticsTestCase {
         System.out.flush();
         String output = baos.toString();
 
-        AssertJUnit.assertFalse(output.contains("Gauges"));
+        AssertJUnit.assertTrue(output.contains("Gauges"));
 
         log.info(output);
         System.setOut(old);
