@@ -19,10 +19,10 @@
 package org.wso2.siddhi.core.util.statistics.metrics;
 
 import com.codahale.metrics.ConsoleReporter;
-import com.codahale.metrics.JmxReporter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Reporter;
 import com.codahale.metrics.ScheduledReporter;
+import com.codahale.metrics.jmx.JmxReporter;
 import org.wso2.siddhi.core.util.statistics.StatisticsManager;
 import org.wso2.siddhi.query.api.annotation.Element;
 
