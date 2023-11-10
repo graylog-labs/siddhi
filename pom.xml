@@ -29,7 +29,7 @@
     <groupId>org.graylog.repackaged.siddhi</groupId>
     <artifactId>siddhi</artifactId>
     <packaging>pom</packaging>
-    <version>4.5.11.2</version>
+    <version>4.5.11.3-SNAPSHOT</version>
     <name>Siddhi</name>
     <description>Siddhi, high performing Complex Event Processing Engine</description>
     <url>http://github.com/graylog-labs/siddhi</url>
@@ -576,7 +576,7 @@
         <url>https://github.com/graylog-labs/siddhi.git</url>
         <developerConnection>scm:git:git@github.com:graylog-labs/siddhi.git</developerConnection>
         <connection>scm:git:git@github.com:graylog-labs/siddhi.git</connection>
-        <tag>siddhi-4.5.11.2</tag>
+        <tag>v4.5.11</tag>
     </scm>
 
     <repositories>
