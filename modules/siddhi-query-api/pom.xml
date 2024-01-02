@@ -67,15 +67,6 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <mavan.findbugsplugin.exclude.file>../../findbugs-exclude.xml</mavan.findbugsplugin.exclude.file>
-    </properties>
-
 </project>
