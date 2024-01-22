@@ -250,7 +250,7 @@ public class OutputParser {
             StreamJunction outputStreamJunction = streamJunctionMap.get(id + key);
             if (outputStreamJunction == null) {
                 outputStreamJunction = new StreamJunction(outputStreamDefinition,
-                        siddhiAppContext.getExecutorService(),
+                        siddhiAppContext.getExecutorThreadFactory(),
                         siddhiAppContext.getBufferSize(), null, siddhiAppContext);
                 streamJunctionMap.putIfAbsent(id + key, outputStreamJunction);
             }

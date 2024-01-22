@@ -135,7 +135,7 @@ public class PartitionRuntime implements Snapshotable {
 
                 if (outputStreamJunction == null) {
                     outputStreamJunction = new StreamJunction(streamDefinition,
-                            siddhiAppContext.getExecutorService(),
+                            siddhiAppContext.getExecutorThreadFactory(),
                             siddhiAppContext.getBufferSize(),
                             null, siddhiAppContext);
                     localStreamJunctionMap.putIfAbsent(id, outputStreamJunction);
@@ -148,7 +148,7 @@ public class PartitionRuntime implements Snapshotable {
 
                 if (outputStreamJunction == null) {
                     outputStreamJunction = new StreamJunction(streamDefinition,
-                            siddhiAppContext.getExecutorService(),
+                            siddhiAppContext.getExecutorThreadFactory(),
                             siddhiAppContext.getBufferSize(),
                             null, siddhiAppContext);
                     streamJunctionMap.putIfAbsent(id, outputStreamJunction);
@@ -166,7 +166,7 @@ public class PartitionRuntime implements Snapshotable {
 
             if (outputStreamJunction == null) {
                 outputStreamJunction = new StreamJunction(streamDefinition,
-                        siddhiAppContext.getExecutorService(),
+                        siddhiAppContext.getExecutorThreadFactory(),
                         siddhiAppContext.getBufferSize(),
                         null, siddhiAppContext);
                 streamJunctionMap.putIfAbsent(id, outputStreamJunction);
@@ -291,7 +291,7 @@ public class PartitionRuntime implements Snapshotable {
                         StreamJunction streamJunction = localStreamJunctionMap.get(streamId + key);
                         if (streamJunction == null) {
                             streamJunction = new StreamJunction(streamDefinition, siddhiAppContext
-                                    .getExecutorService(),
+                                    .getExecutorThreadFactory(),
                                     siddhiAppContext.getBufferSize(),
                                     null, siddhiAppContext);
                             localStreamJunctionMap.put(streamId + key, streamJunction);

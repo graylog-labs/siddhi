@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * Holder object for context information of {@link org.wso2.siddhi.query.api.SiddhiApp}.
@@ -50,6 +51,7 @@ public class SiddhiAppContext {
     private boolean enforceOrder;
     private StatisticsManager statisticsManager = null;
 
+    private ThreadFactory executorThreadFactory;
     private ExecutorService executorService;
     private ScheduledExecutorService scheduledExecutorService;
     private List<EternalReferencedHolder> eternalReferencedHolders;
@@ -137,6 +139,14 @@ public class SiddhiAppContext {
 
     public void setThreadBarrier(ThreadBarrier threadBarrier) {
         this.threadBarrier = threadBarrier;
+    }
+
+    public ThreadFactory getExecutorThreadFactory() {
+        return this.executorThreadFactory;
+    }
+
+    public void setExecutorThreadFactory(ThreadFactory threadFactory) {
+        this.executorThreadFactory = threadFactory;
     }
 
     public ExecutorService getExecutorService() {
