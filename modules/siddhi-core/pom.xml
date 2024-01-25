@@ -21,7 +21,7 @@
     <parent>
         <artifactId>siddhi</artifactId>
         <groupId>org.graylog.repackaged.siddhi</groupId>
-        <version>4.5.11.3</version>
+        <version>4.5.11.4-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
 
     </parent>
