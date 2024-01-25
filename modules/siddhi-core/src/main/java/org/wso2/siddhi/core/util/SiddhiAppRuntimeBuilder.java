@@ -201,7 +201,7 @@ public class SiddhiAppRuntimeBuilder {
 
             if (outputStreamJunction == null) {
                 outputStreamJunction = new StreamJunction(streamDefinition,
-                        siddhiAppContext.getExecutorService(),
+                        siddhiAppContext.getExecutorThreadFactory(),
                         siddhiAppContext.getBufferSize(), null, siddhiAppContext);
                 streamJunctionMap.putIfAbsent(streamDefinition.getId(), outputStreamJunction);
             }
@@ -217,7 +217,7 @@ public class SiddhiAppRuntimeBuilder {
 
             if (outputStreamJunction == null) {
                 outputStreamJunction = new StreamJunction(streamDefinition,
-                        siddhiAppContext.getExecutorService(),
+                        siddhiAppContext.getExecutorThreadFactory(),
                         siddhiAppContext.getBufferSize(), null, siddhiAppContext);
                 streamJunctionMap.putIfAbsent(streamDefinition.getId(), outputStreamJunction);
             }

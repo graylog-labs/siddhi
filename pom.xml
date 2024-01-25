@@ -53,7 +53,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.apache.log4j.wso2</groupId>
+                <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
                 <exclusions>
@@ -81,12 +81,6 @@
                 <version>${testng.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency> <!-- Use latest org.webjars:jquery version to fix security issue -->
-                <groupId>org.webjars</groupId>
-                <artifactId>jquery</artifactId>
-                <version>3.7.1</version>
-                <scope>test</scope>
-            </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -99,7 +93,7 @@
                 <version>${antlr.runtime.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.wso2.orbit.com.lmax</groupId>
+                <groupId>com.lmax</groupId>
                 <artifactId>disruptor</artifactId>
                 <version>${disruptor.version}</version>
             </dependency>
@@ -129,18 +123,6 @@
                 <groupId>io.dropwizard.metrics</groupId>
                 <artifactId>metrics-jmx</artifactId>
                 <version>${metrics.version}</version>
-            </dependency>
-
-            <!--Event Table-->
-            <dependency>
-                <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.core</artifactId>
-                <version>${org.osgi.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.osgi</groupId>
-                <artifactId>org.eclipse.osgi.services</artifactId>
-                <version>${version.equinox.osgi.services}</version>
             </dependency>
 
             <!--Time-->
@@ -378,14 +360,12 @@
 
         <testng.version>7.8.0</testng.version>
         <junit.version>4.13.2</junit.version>
-        <log4j.version>1.2.17.wso2v1</log4j.version>
+        <log4j.version>1.2.17</log4j.version>
         <antlr.runtime.version>4.13.1</antlr.runtime.version>
-        <disruptor.version>3.4.2.wso2v1</disruptor.version>
+        <disruptor.version>4.0.0</disruptor.version>
         <guava.version>32.1.3-jre</guava.version>
         <gson.version>2.10.1</gson.version>
         <classindex.version>3.13</classindex.version>
-        <org.osgi.core.version>6.0.0</org.osgi.core.version>
-        <version.equinox.osgi.services>3.3.100.v20130513-1956</version.equinox.osgi.services>
         <metrics.version>4.2.22</metrics.version>
     </properties>
 
@@ -395,60 +375,6 @@
         <connection>scm:git:git@github.com:graylog-labs/siddhi.git</connection>
         <tag>v4.5.11</tag>
     </scm>
-
-    <repositories>
-        <repository>
-            <id>wso2-nexus</id>
-            <name>WSO2 internal Repository</name>
-            <url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-
-        <repository>
-            <id>wso2.releases</id>
-            <name>WSO2 internal Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-
-        <repository>
-            <id>wso2.snapshots</id>
-            <name>Apache Snapshot Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-
-        <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>https://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-        <!--todo is this necessary ?-->
-        <repository>
-            <id>sonatype.releases</id>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
-
-    </repositories>
 
     <distributionManagement>
         <snapshotRepository>
@@ -462,44 +388,5 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-
-    <pluginRepositories>
-
-        <pluginRepository>
-            <id>wso2.releases</id>
-            <name>WSO2 internal Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </pluginRepository>
-
-        <pluginRepository>
-            <id>wso2.snapshots</id>
-            <name>Apache Snapshot Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-
-        <pluginRepository>
-            <id>wso2-nexus</id>
-            <name>WSO2 internal Repository</name>
-            <url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </pluginRepository>
-
-    </pluginRepositories>
 
 </project>

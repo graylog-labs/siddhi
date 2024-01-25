@@ -59,6 +59,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 import static org.wso2.siddhi.core.util.parser.helper.AnnotationHelper.generateIncludedMetrics;
 
@@ -156,9 +157,12 @@ public class SiddhiAppParser {
 
             siddhiAppContext.setThreadBarrier(new ThreadBarrier());
 
-            siddhiAppContext.setExecutorService(Executors.newCachedThreadPool(
-                    new ThreadFactoryBuilder().setNameFormat("Siddhi-" + siddhiAppContext.getName() +
-                            "-executor-thread-%d").build()));
+            final ThreadFactory executorThreadFactory = new ThreadFactoryBuilder()
+                    .setNameFormat("Siddhi-" + siddhiAppContext.getName() + "-executor-thread-%d")
+                    .build();
+
+            siddhiAppContext.setExecutorThreadFactory(executorThreadFactory);
+            siddhiAppContext.setExecutorService(Executors.newCachedThreadPool(executorThreadFactory));
 
             siddhiAppContext.setScheduledExecutorService(Executors.newScheduledThreadPool(5,
                     new ThreadFactoryBuilder().setNameFormat("Siddhi-" +

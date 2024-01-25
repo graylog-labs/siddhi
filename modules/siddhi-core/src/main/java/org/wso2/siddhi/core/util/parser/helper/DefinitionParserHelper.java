@@ -140,7 +140,7 @@ public class DefinitionParserHelper {
             StreamJunction faultStreamJunction = streamJunctionMap.get(SiddhiConstants.FAULT_STREAM_PREFIX.
                     concat(streamDefinition.getId()));
             StreamJunction streamJunction = new StreamJunction(streamDefinition,
-                    siddhiAppContext.getExecutorService(),
+                    siddhiAppContext.getExecutorThreadFactory(),
                     siddhiAppContext.getBufferSize(), faultStreamJunction, siddhiAppContext);
             streamJunctionMap.putIfAbsent(streamDefinition.getId(), streamJunction);
         }

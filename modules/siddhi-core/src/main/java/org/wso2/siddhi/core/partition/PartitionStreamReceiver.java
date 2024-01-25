@@ -310,7 +310,7 @@ public class PartitionStreamReceiver implements StreamJunction.Receiver {
     }
 
     private StreamJunction createStreamJunction() {
-        return new StreamJunction(streamDefinition, siddhiAppContext.getExecutorService(),
+        return new StreamJunction(streamDefinition, siddhiAppContext.getExecutorThreadFactory(),
                 siddhiAppContext.getBufferSize(), null, siddhiAppContext);
     }
 

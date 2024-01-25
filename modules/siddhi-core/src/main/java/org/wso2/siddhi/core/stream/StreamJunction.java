@@ -52,7 +52,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * Stream Junction is the place where streams are collected and distributed. There will be an Stream Junction per
@@ -69,7 +69,7 @@ public class StreamJunction implements EventBufferHolder {
     private int bufferSize;
     private List<Receiver> receivers = new CopyOnWriteArrayList<Receiver>();
     private List<Publisher> publishers = Collections.synchronizedList(new LinkedList<>());
-    private ExecutorService executorService;
+    private ThreadFactory threadFactory;
     private boolean async = false;
     private Disruptor<EventExchangeHolder> disruptor;
     private RingBuffer<EventExchangeHolder> ringBuffer;
@@ -80,12 +80,12 @@ public class StreamJunction implements EventBufferHolder {
     private OnErrorAction onErrorAction = OnErrorAction.LOG;
     private ExceptionListener exceptionListener;
 
-    public StreamJunction(StreamDefinition streamDefinition, ExecutorService executorService, int bufferSize,
+    public StreamJunction(StreamDefinition streamDefinition, ThreadFactory threadFactory, int bufferSize,
                           StreamJunction faultStreamJunction, SiddhiAppContext siddhiAppContext) {
         this.streamDefinition = streamDefinition;
         this.bufferSize = bufferSize;
         this.batchSize = bufferSize;
-        this.executorService = executorService;
+        this.threadFactory = threadFactory;
         this.siddhiAppContext = siddhiAppContext;
         if (siddhiAppContext.getStatisticsManager() != null) {
             this.throughputTracker = QueryParserHelper.createThroughputTracker(siddhiAppContext,
@@ -285,7 +285,7 @@ public class StreamJunction implements EventBufferHolder {
                     ProducerType producerType = ProducerType.MULTI;
                     disruptor = new Disruptor<EventExchangeHolder>(
                             new EventExchangeHolderFactory(streamDefinition.getAttributeList().size()),
-                            bufferSize, executorService, producerType,
+                            bufferSize, threadFactory, producerType,
                             new BlockingWaitStrategy());
                     disruptor.handleExceptionsWith(siddhiAppContext.getDisruptorExceptionHandler());
                     break;
@@ -294,7 +294,7 @@ public class StreamJunction implements EventBufferHolder {
             if (disruptor == null) {
                 disruptor = new Disruptor<EventExchangeHolder>(
                         new EventExchangeHolderFactory(streamDefinition.getAttributeList().size()),
-                        bufferSize, executorService);
+                        bufferSize, threadFactory);
                 disruptor.handleExceptionsWith(siddhiAppContext.getDisruptorExceptionHandler());
             }
             if (workers > 0) {
